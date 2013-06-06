@@ -1,6 +1,5 @@
 from setuptools import setup
 import re
-from glob import glob
 
 def get_version():
     VERSIONFILE="wardeninstaller/__init__.py"
