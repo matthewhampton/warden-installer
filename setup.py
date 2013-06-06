@@ -11,9 +11,6 @@ def get_version():
             return mo.group(1)
     raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
 
-def check_fault_requires():
-    pass
-
 setup(
     name             = 'warden-installer',
     version          = get_version(),
