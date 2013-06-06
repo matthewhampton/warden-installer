@@ -19,15 +19,13 @@ setup(
     long_description = \
         """
 Installs the various dependencies for warden.  This is required because graphite+carbon+whisper don't play so well with Django i.t.o. install-data directives.
-
-It also then runs the initialisation scripts for warden, to create the django app and so on.
         """,
     author           = 'Matthew Hampton',
     author_email     = 'support@sjsoft.com',
     packages         = ['wardeninstaller'],
     #package_dir       ={'' },
     zip_safe = False,
-    install_requires = ['sh', 'fabric'],
+    install_requires = [],
     keywords         = 'sentry carbon graphite monitoring warden installer',
     url              = 'https://github.com/matthewhampton/warden-installer',
     entry_points     = {
