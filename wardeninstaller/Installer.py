@@ -22,7 +22,7 @@ def install_libraries(home, run=None, pip=None, lib=None, scripts=None):
          '--install-option=--install-scripts=%s' % scripts,
          '--install-option=--install-lib=%s' % lib,
          '--install-option=--install-data=%s' % (os.path.join(home, 'graphite'))])
-    run([pip, 'install', "git+git://github.com/richg/graphite-web.git",
+    run([pip, 'install', "http://github.com/richg/graphite-web/tarball/0.9.x#egg=graphite-web-0.9.x-warden",
          '--install-option=--install-scripts=%s' % scripts,
          '--install-option=--install-lib=%s' % lib,
          '--install-option=--install-data=%s' % (os.path.join(home, 'graphite'))])
