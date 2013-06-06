@@ -18,7 +18,7 @@ def install_libraries(home, run=None, pip=None, lib=None, scripts=None):
     run([pip, 'install', "sentry==5.2.2"])
 
     run([pip, 'install', "Django==1.4.3"])
-    run([pip, 'install', 'git+git://github.com/richg/carbon.git',
+    run([pip, 'install', 'http://github.com/richg/carbon/tarball/0.9.x-warden#egg=carbon-0.9.10-warden',
          '--install-option=--install-scripts=%s' % scripts,
          '--install-option=--install-lib=%s' % lib,
          '--install-option=--install-data=%s' % (os.path.join(home, 'graphite'))])
@@ -26,7 +26,7 @@ def install_libraries(home, run=None, pip=None, lib=None, scripts=None):
          '--install-option=--install-scripts=%s' % scripts,
          '--install-option=--install-lib=%s' % lib,
          '--install-option=--install-data=%s' % (os.path.join(home, 'graphite'))])
-    run([pip, 'install', "git+git://github.com/richg/Diamond.git",
+    run([pip, 'install', "http://github.com/richg/Diamond/tarball/master#egg=diamond",
          '--install-option=--install-scripts=%s' % scripts,
          '--install-option=--install-lib=%s' % lib,
          '--install-option=--install-data=%s' % (os.path.join(home, 'diamond'))])
