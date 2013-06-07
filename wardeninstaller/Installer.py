@@ -15,26 +15,30 @@ def install_libraries(home, run=None, pip=None, lib=None, scripts=None):
         lib= distutils.sysconfig.get_python_lib()
     if scripts is None:
         scripts=os.path.dirname(sys.executable)
-    run([pip, 'install', "sentry==5.2.2"])
 
-    run([pip, 'install', "Django==1.4.3"])
-    run([pip, 'install', 'http://github.com/richg/carbon/tarball/0.9.x-warden#egg=carbon-0.9.10-warden',
+    run([pip, 'install', 'http://github.com/richg/whisper/tarball/0.9.x-warden#egg=whisper-0.9.10-warden',
          '--install-option=--install-scripts=%s' % scripts,
          '--install-option=--install-lib=%s' % lib,
          '--install-option=--install-data=%s' % (os.path.join(home, 'graphite'))])
+    run([pip, 'install', 'http://github.com/richg/carbon/tarball/0.9.x-warden#egg=carbon-0.9.x-warden',
+         '--install-option=--install-scripts=%s' % scripts,
+         '--install-option=--install-lib=%s' % lib,
+         '--install-option=--install-data=%s' % (os.path.join(home, 'graphite'))])
+    run([pip, 'install', "http://github.com/richg/Diamond/tarball/master",
+         '--install-option=--install-scripts=%s' % scripts,
+         '--install-option=--install-lib=%s' % lib,
+         '--install-option=--install-data=%s' % (os.path.join(home, 'diamond'))])
+    run([pip, 'install', "Django==1.4.3"])
     run([pip, 'install', "http://github.com/richg/graphite-web/tarball/0.9.x#egg=graphite-web-0.9.x-warden",
          '--install-option=--install-scripts=%s' % scripts,
          '--install-option=--install-lib=%s' % lib,
          '--install-option=--install-data=%s' % (os.path.join(home, 'graphite'))])
-    run([pip, 'install', "http://github.com/richg/Diamond/tarball/master#egg=diamond",
-         '--install-option=--install-scripts=%s' % scripts,
-         '--install-option=--install-lib=%s' % lib,
-         '--install-option=--install-data=%s' % (os.path.join(home, 'diamond'))])
 
     run([pip, 'install', "CherryPy==3.2.2" ])
     run([pip, 'install', "http://cairographics.org/releases/py2cairo-1.8.10.tar.gz" ])
 
-    run([pip, 'install', "git+git://github.com/richg/warden.git",
+    run([pip, 'install', "sentry==5.2.2"])
+    run([pip, 'install', "http://github.com/richg/warden/tarball/master",
          '--install-option=--install-data=%s' % home])
 
     run([pip, 'install', "python-daemon"])
