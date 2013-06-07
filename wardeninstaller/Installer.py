@@ -28,6 +28,8 @@ def install_libraries(home, run=None, pip=None, lib=None, scripts=None, prefix=N
         run([pipping_easy_install, 'zope.interface'])
     else:
         run([pip, 'install', "http://cairographics.org/releases/py2cairo-1.8.10.tar.gz" ])
+        run([pip, 'install', "python-daemon"])
+        run([pip, 'install', "lockfile"])
 
 
     run([pip, 'install', 'http://github.com/richg/whisper/tarball/0.9.x-warden#egg=whisper-0.9.10-warden',
@@ -57,8 +59,6 @@ def install_libraries(home, run=None, pip=None, lib=None, scripts=None, prefix=N
     run([pip, 'install', "http://github.com/richg/warden/tarball/master",
          '--install-option=--install-data=%s' % home])
 
-    run([pip, 'install', "python-daemon"])
-    run([pip, 'install', "lockfile"])
 
 def main():
     parser = argparse.ArgumentParser(description='Warden installer')
