@@ -21,6 +21,7 @@ def install_libraries(home, run=None, pip=None, lib=None, scripts=None, prefix=N
     if 'win' in sys.platform:
         pipping_easy_install = 'pipping_easy_install'
 
+        run([pip, 'install', 'http://github.com/matthewhampton/pipping-easy-install/tarball/master'])
         run([pipping_easy_install, 'Twisted==11.1.0'])
         run([pipping_easy_install, 'psutil'])
         run([pipping_easy_install, 'pycairo'])
