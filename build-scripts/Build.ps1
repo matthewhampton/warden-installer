@@ -1,11 +1,6 @@
 $buildDir = "$pwd\build"
 $cacheDir = "$pwd\cache"
 
-if (Test-Path  ($buildDir))
-{
-    #Remove-Item -Recurse -Force $buildDir
-}
-
 if (!(Test-Path  ($buildDir)))
 {
     New-Item $buildDir -type directory
@@ -58,3 +53,9 @@ if (!(Test-Path  ($wardenInstallerExe)))
     Write-Host "Exit code was: $exitCode"
 }
 
+
+Set-Item -path env:Path -value ($env:Path + ";$buildDir\Python27;$buildDir\Python27\Scripts")
+Set-Item -path env:PIP_DOWNLOAD_CACHE -value ("$cacheDir")
+
+$exitCode = (Start-Process -FilePath $wardenInstallerExe -ArgumentList "$buildDir\warden" -Wait -Passthru).ExitCode
+Write-Host "Exit code was: $exitCode"
