@@ -23,9 +23,10 @@ Installs the various dependencies for warden.  This is required because graphite
     author           = 'Matthew Hampton',
     author_email     = 'support@sjsoft.com',
     packages         = ['wardeninstaller'],
+    package_data={'wardeninstaller': ['warden_requirements*.txt']},
     #package_dir       ={'' },
     zip_safe = False,
-    install_requires = [],
+    install_requires = ['pip'],
     keywords         = 'sentry carbon graphite monitoring warden installer',
     url              = 'https://github.com/matthewhampton/warden-installer',
     entry_points     = {
