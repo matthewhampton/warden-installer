@@ -3,10 +3,17 @@ import subprocess
 import os
 import sys
 import distutils.sysconfig
+import pkg_resources
 
 def _run(command):
     subprocess.check_call(command)
 
+def is_installed(package_name):
+    try:
+        pkg_resources.get_distribution(package_name)
+        return True
+    except pkg_resources.DistributionNotFound:
+        return False
 
 def install_libraries(home, run=None, pip=None, lib=None, scripts=None, prefix=None):
     run = run or _run
@@ -21,14 +28,17 @@ def install_libraries(home, run=None, pip=None, lib=None, scripts=None, prefix=N
     if 'win' in sys.platform:
         pipping_easy_install = 'pipping_easy_install'
 
-        run([pip, 'install', 'http://github.com/matthewhampton/pipping-easy-install/tarball/master'])
+        if not is_installed('pipping-easy-install'):
+            run([pip, 'install', 'http://github.com/matthewhampton/pipping-easy-install/tarball/master'])
+
         run([pipping_easy_install, 'Twisted==11.1.0'])
         run([pipping_easy_install, 'psutil'])
         run([pipping_easy_install, 'pycairo'])
         run([pipping_easy_install, 'pywin32'])
         run([pipping_easy_install, 'zope.interface'])
     else:
-        run([pip, 'install', "http://cairographics.org/releases/py2cairo-1.8.10.tar.gz" ])
+        if not is_installed('pycairo'):
+            run([pip, 'install', "http://cairographics.org/releases/py2cairo-1.8.10.tar.gz" ])
         run([pip, 'install', "python-daemon"])
         run([pip, 'install', "lockfile"])
 
